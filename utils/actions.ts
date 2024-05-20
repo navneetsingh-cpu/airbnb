@@ -61,6 +61,7 @@ export const fetchProfileImage = async () => {
 
 const getAuthUser = async () => {
     const user = await currentUser();
+
     if (!user) {
         throw new Error('You must be logged in to access this route');
     }
@@ -105,4 +106,11 @@ export const updateProfileAction = async (
             message: error instanceof Error ? error.message : 'An error occurred',
         };
     }
+};
+
+export const updateProfileImageAction = async (
+    prevState: any,
+    formData: FormData
+): Promise<{ message: string }> => {
+    return { message: 'Profile image updated successfully' };
 };
