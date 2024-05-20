@@ -1,14 +1,24 @@
+"use server";
+
 import FormInput from "@/components/form/FormInput";
 import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
+import { profileSchema } from "@/utils/schemas";
 
-const createProfileAction = async (prevState: any, formData: FormData) => {
-  "use server";
-  const firstName = formData.get("firstName") as string;
-  if (firstName !== "shakeAndBake") return { message: "there was an error..." };
-  return { message: "Profile Created" };
+export const createProfileAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = profileSchema.parse(rawData);
+    console.log(validatedFields);
+    return { message: "Profile Created" };
+  } catch (error) {
+    console.log(error);
+    return { message: "there was an error..." };
+  }
 };
-
 function CreateProfile() {
   return (
     <section>
