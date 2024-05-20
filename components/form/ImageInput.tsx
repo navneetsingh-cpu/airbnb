@@ -1,20 +1,20 @@
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
 
 function ImageInput() {
-  const name = "image";
+  const name = 'image';
   return (
-    <div className="mb-2">
-      <Label htmlFor={name} className="capitalize">
+    <div className='mb-2'>
+      <Label htmlFor={name} className='capitalize'>
         Image
       </Label>
       <Input
         id={name}
         name={name}
-        type="file"
+        type='file'
         required
-        accept="image/*"
-        className="max-w-xs"
+        accept='image/*'
+        className='max-w-xs'
       />
     </div>
   );
